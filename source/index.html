@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Personal Finance Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Personal Finance Tracker</h1>
+    <div class="summary">
+      <div>
+        <div class="label">Saldo</div>
+        <div class="amount" id="balance">Rp0</div>
+      </div>
+      <div>
+        <div class="label">Total Income</div>
+        <div class="amount income" id="income">Rp0</div>
+      </div>
+      <div>
+        <div class="label">Total Expense</div>
+        <div class="amount expense" id="expense">Rp0</div>
+      </div>
+    </div>
+
+    <form id="transaction-form">
+      <select id="type" required>
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+      <input type="text" id="category" placeholder="Category" required>
+      <input type="number" id="amount" placeholder="Amount (Rp)" required min="1">
+      <input type="date" id="date" required>
+      <input type="text" id="desc" placeholder="Description (optional)">
+      <button type="submit">Add</button>
+    </form>
+
+    <div class="export-import-row">
+      <button id="exportCSV">Export CSV</button>
+      <input type="file" id="importCSV" accept=".csv" style="display:none;">
+      <button id="importBtn">Import CSV</button>
+    </div>
+
+    <div class="monthly-row">
+      <label for="monthSelect">Monthly Report: </label>
+      <select id="monthSelect"></select>
+      <select id="yearSelect"></select>
+    </div>
+
+    <canvas id="pieChart" style="max-width: 400px; margin: 20px auto;"></canvas>
+
+    <h2>Transaction History</h2>
+    <table id="history-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Category</th>
+          <th>Amount</th>
+          <th>Description</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <button id="clearAll" class="danger">Clear All</button>
+    <div class="copyright">© hugocodeseverything 2025</div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
